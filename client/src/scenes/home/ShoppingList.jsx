@@ -1,4 +1,4 @@
-import { useMediaQuery } from '@mui/material';
+import { Box, Tab, Tabs, Typography, useMediaQuery } from '@mui/material';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItems } from '../../state';
@@ -40,7 +40,36 @@ const ShoppingList = () => {
     item => item.attributes.category === 'bestSellers'
   );
 
-  return <div>ShoppingList</div>;
+  return (
+    <Box maxWidth="80%" margin="80px auto">
+      <Typography>
+        Our Featured <b>Products</b>
+      </Typography>
+      <Tabs
+        textColor="primary"
+        indicatorColor="primary"
+        value={value}
+        onChange={handleChange}
+        TabIndicatorProps={{ sx: { display: isNonMobile ? 'block' : 'none' } }}
+        sx={{
+          m: '25px',
+          '& .MuiTabs-flexContainer': {
+            flexWrap: 'wrap',
+          },
+        }}
+      >
+        <Tab label="ALL" value="all" />
+        <Tab label="NEW ARRIVALS" value="newArrivals" />
+        <Tab label="BEST SELLERS" value="bestSellers" />
+        <Tab label="TOP RATED" value="topRated" />
+      </Tabs>
+      <Box
+        margin="0 auto"
+        display="grid"
+        gridTemplateColumns="repeat(auto-fill, 300px)"
+      ></Box>
+    </Box>
+  );
 };
 
 export default ShoppingList;
