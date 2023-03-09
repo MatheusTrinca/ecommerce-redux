@@ -1,4 +1,5 @@
 import { Box, Tab, Tabs, Typography, useMediaQuery } from '@mui/material';
+import Item from '../../components/Item';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItems } from '../../state';
@@ -67,7 +68,27 @@ const ShoppingList = () => {
         margin="0 auto"
         display="grid"
         gridTemplateColumns="repeat(auto-fill, 300px)"
-      ></Box>
+        justifyContent="space-around"
+        rowGap="20px"
+        columnGap="1.33%"
+      >
+        {value === 'all' &&
+          items.map(item => (
+            <Item item={item} key={`${item.name}-${item.id}`} />
+          ))}
+        {value === 'newArrivals' &&
+          newArrivalItems.map(item => (
+            <Item item={item} key={`${item.name}-${item.id}`} />
+          ))}
+        {value === 'topRated' &&
+          topRatedItems.map(item => (
+            <Item item={item} key={`${item.name}-${item.id}`} />
+          ))}
+        {value === 'bestSellers' &&
+          bestSellersItems.map(item => (
+            <Item item={item} key={`${item.name}-${item.id}`} />
+          ))}
+      </Box>
     </Box>
   );
 };

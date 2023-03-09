@@ -29,6 +29,8 @@ const Item = ({ item, width }) => {
     },
   } = image;
 
+  console.log(url);
+
   return (
     <Box width={width}>
       <Box
@@ -37,7 +39,7 @@ const Item = ({ item, width }) => {
         onMouseOut={() => setIsHovered(false)}
       >
         <img
-          src={`https://localhost:1337${url}`}
+          src={`http://localhost:1337${url}`}
           alt={item.name}
           width="300px"
           height="400px"
